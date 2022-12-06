@@ -13,11 +13,9 @@ const App = () => {
             <div className="bg-gray-900 min-h-screen pb-12 min-w-screen">
                 <Navbar />
                 <Routes>
+                    <Route path="/" element={<SigninPage />} />
                     <Route path="/signin" element={<SigninPage />} />
                     <Route path="/transfer" element={<TransferPage />} />
-                    <Route path="/nativeTransfer" element={<NativeTransfer />} />
-                    <Route path="/erc20" element={<ERC20 />} />
-                    <Route path="/recentReceipt" element={<RecentReceipt />} />
                 </Routes>
             </div>
         </Suspense>

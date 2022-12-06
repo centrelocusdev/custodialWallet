@@ -1,13 +1,58 @@
 import React from "react";
 import { useState } from 'react'
-
+import axios from 'axios';
 const NativeTransfer = (props) => {
+    const [email, setEmail] = useState('');
     const [chain, setChain] = useState('')
+    const [balance, setBalance] = useState('');
+    const [receiver, setReceiver] = useState('');
+    const [amount, setAmount] = useState('');
+    const [provider, setProvider] = useState('');
+
+
+    const api = "http://52.66.196.48:3002"
+
+    const checkBalance = async () => {
+        if(chain === "ethereum"){
+          setProvider("rpcUrl")
+        }
+        else if(chain === 'mumbai'){
+          setProvider("https://rpc-mumbai.maticvigil.com");
+        }
+        else{
+          setProvider("")
+        }
+        
+        const response = await axios.post(
+          `${api}/balance`,
+          { email, provider },
+          { withCredentials: true },
+          {
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+        setBalance(response.data);
+          console.log(response.data);
+      
+       }
+
+       const send = async () => {
+
+        const response = await axios.post(
+          `${api}/send`,
+          { email, amount, receiver, provider },
+          { withCredentials: true },
+          {
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+        console.log(response.data);
+       }
     const handleChange = (e) => {
         setChain(e.target.value)
     }
 
-    return <section className="py-12 px-7 shadow-lg rounded w-fit mx-auto bg-[#141E2F] text-[20px]">
+    return <section className="py-12 px-7 shadow-lg rounded-2xl w-fit mx-auto bg-[#141E2F] text-[20px]">
                 <select value={chain} onChange={handleChange} className='p-4 rounded-full bg-[#263140] text-[#929292] w-full px-7'>
                     <option value="" className="py-4 text-[#929292]">Select Chain</option>
                     <option value="1" className="py-4 text-[#929292]">Chain 1</option>
