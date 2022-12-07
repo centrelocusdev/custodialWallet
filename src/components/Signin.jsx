@@ -28,6 +28,8 @@ const Signin = () => {
         setWalletaddress(response.data.wallet.address);
         //setwalletPrivatekey(response.data.wallet.privateKey);
         console.log(response);
+
+        
         //setLogin(true);
     }
 
