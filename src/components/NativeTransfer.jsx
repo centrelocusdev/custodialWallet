@@ -1,16 +1,19 @@
 import React from "react";
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios';
 const NativeTransfer = (props) => {
-    const [email, setEmail] = useState('');
-    const [chain, setChain] = useState('')
+    const {email, walletaddress} = props
+    const [chain, setChain] = useState('mumbai')
     const [balance, setBalance] = useState('');
     const [receiver, setReceiver] = useState('');
     const [amount, setAmount] = useState('');
     const [provider, setProvider] = useState('');
 
-
     const api = "http://52.66.196.48:3002"
+
+    useEffect(() => {
+      checkBalance()
+    })
 
     const checkBalance = async () => {
         if(chain === "ethereum"){
@@ -34,24 +37,25 @@ const NativeTransfer = (props) => {
         setBalance(response.data);
           console.log(response.data);
       
-       }
-       //Transfer
-       const send = async () => {
+    }
 
-        const response = await axios.post(
-          `${api}/send`,
-          { email, amount, receiver, provider },
-          { withCredentials: true },
-          {
-            headers: { "Content-Type": "application/json" },
-          }
-        );
-        console.log(response.data);
-        checkBalance();
-       }
+    //Transfer
+    const send = async () => {
+      const response = await axios.post(
+        `${api}/send`,
+        { email, amount, receiver, provider },
+        { withCredentials: true },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      console.log(response.data);
+      checkBalance(); //calling after transfer
+    }
+
     const handleChange = (e) => {
-       checkBalance();
-        setChain(e.target.value)
+       checkBalance();  //calling on change
+       setChain(e.target.value)
     }
 
     const handleReceiverInput = (e) => setReceiver(e.target.value)
@@ -60,7 +64,7 @@ const NativeTransfer = (props) => {
     return <section className="py-12 px-7 shadow-lg rounded-2xl w-fit mx-auto bg-[#141E2F] text-[20px]">
               <form onSubmit={send}>
                 <select value={chain} onChange={handleChange} className='p-4 rounded-full bg-[#263140] text-[#929292] w-full px-7'>
-                <option value="mumbai" className="py-4 text-[#929292]">Mumbai</option>
+                    <option value="mumbai" className="py-4 text-[#929292]">Mumbai</option>
                     <option value="ethereum" className="py-4 text-[#929292]">Ethereum</option>
                     
                 </select>

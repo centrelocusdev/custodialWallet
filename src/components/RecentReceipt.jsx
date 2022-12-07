@@ -1,10 +1,11 @@
 import React from "react";
 
-const RecentReceipt = () => {
+const RecentReceipt = (props) => {
+    const {email, walletaddress} = props
     return <section className="py-12 px-7 shadow-lg rounded-2xl w-fit mx-auto bg-[#141E2F] text-[20px]">
             {
-                recentReceipts.map((rec) => (
-                    <Receipt rec={rec} />
+                recentReceipts.map((rec, i) => (
+                    <Receipt rec={rec} key={i} />
                 ))
             }
 

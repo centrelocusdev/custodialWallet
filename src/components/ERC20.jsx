@@ -3,8 +3,8 @@ import {useState} from 'react'
 import axios from 'axios';
 
 const ERC20 = (props) => {
-    const [email, setEmail] = useState('');
-    const [chain, setChain] = useState('')
+  const {email, walletaddress} = props
+    const [chain, setChain] = useState('mumbai')
     const [receiver, setReceiver] = useState('');
     const [amount, setAmount] = useState('');
     const [provider, setProvider] = useState('');
@@ -32,9 +32,8 @@ const ERC20 = (props) => {
     return <section className="py-12 px-7 shadow-lg rounded-2xl w-fit mx-auto bg-[#141E2F] text-[20px]">
               <form onSubmit={tokenTransfer}>
 							  <select value={chain} onChange={handleChange} className='p-4 rounded-full bg-[#263140] text-[#929292] w-full px-7'>
-                    <option value="" className="py-4 text-[#929292]">Select Chain</option>
-                    <option value="ethereum" className="py-4 text-[#929292]">Ethereum</option>
                     <option value="mumbai" className="py-4 text-[#929292]">Mumbai</option>
+                    <option value="ethereum" className="py-4 text-[#929292]">Ethereum</option>
                 </select>
 
                 {/* <h5 className="text-[#929292] my-4">Balance: {balance}</h5> */}
