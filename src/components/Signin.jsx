@@ -7,7 +7,7 @@ const Signin = () => {
     const navigate = useNavigate()
     const [email, setEmail] = useState('');
     //const [walletaddress, setWalletaddress] = useState('');
-    const api = "http://52.66.196.48:3002"
+    const api = "https://cors-everywhere.herokuapp.com/http://52.66.196.48:3002"
 
     const handleChange = event => {
         setEmail(event.target.value);
