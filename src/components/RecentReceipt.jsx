@@ -1,33 +1,33 @@
 import React from "react";
-import axios from 'axios';
-import { ethers } from "ethers";
+// import axios from 'axios';
+// import { ethers } from "ethers";
 
 const RecentReceipt = (props) => {
-    const { email, waddress } = props
+    //const { waddress } = props
 
-    const txActivity = async (walletAddress, provider) => {
+    // const txActivity = async (walletAddress, provider) => {
 
-        let endpoint;
-        if (provider == 'ethereum') {
-            endpoint = "https://api-goerli.etherscan.io/api";
-        }
-        else {
-            endpoint = "https://api-testnet.polygonscan.com/api"
-        }
+    //     let endpoint;
+    //     if (provider == 'ethereum') {
+    //         endpoint = "https://api-goerli.etherscan.io/api";
+    //     }
+    //     else {
+    //         endpoint = "https://api-testnet.polygonscan.com/api"
+    //     }
 
-        const ADDRESS = walletAddress;
-        const apikey = "ZYDTV4HXTU8KRZ9EIQA263HK287Y514ZN8";
+    //     const ADDRESS = waddress;
+    //     const apikey = "ZYDTV4HXTU8KRZ9EIQA263HK287Y514ZN8";
 
-        const etherscan = await axios.get(endpoint + `?module=account&action=txlist&address=${ADDRESS}&startblock=0
-    &endblock=99999999
-    &page=1
-    &offset=1000
-    &sort=asc
-    &apikey=${apikey}`);
+    //     const etherscan = await axios.get(endpoint + `?module=account&action=txlist&address=${ADDRESS}&startblock=0
+    // &endblock=99999999
+    // &page=1
+    // &offset=1000
+    // &sort=asc
+    // &apikey=${apikey}`);
 
 
-        const arr = etherscan.data.results;
-        console.log(arr);
+    //     const arr = etherscan.data.results;
+    //     console.log(arr);
 
 
         // if (arr.length == 0) {
@@ -45,7 +45,7 @@ const RecentReceipt = (props) => {
         //     // setTo2(result2.to);
         //     return result1;
         // }
-    }
+    //}
 
     return <section className="py-12 px-7 shadow-lg rounded-2xl w-fit mx-auto bg-[#141E2F] text-[20px]">
         {

@@ -3,11 +3,11 @@ import {useState} from 'react'
 import axios from 'axios';
 
 const ERC20 = (props) => {
-  const {email, walletaddress} = props
+  const {email} = props
     const [chain, setChain] = useState('mumbai')
     const [receiver, setReceiver] = useState('');
     const [amount, setAmount] = useState('');
-    const [provider, setProvider] = useState('');
+    // const [provider, setProvider] = useState('');
     const [tokenaddress, setTokenaddress] = useState('');
     const api = "http://52.66.196.48:3002"
 
@@ -15,7 +15,7 @@ const ERC20 = (props) => {
 
         const response = await axios.post(
           `${api}/tknTransfer`,
-          { email, amount, receiver, provider, tokenaddress },
+          { email, amount, receiver, chain, tokenaddress },
           { withCredentials: true },
           {
             headers: { "Content-Type": "application/json" },

@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from 'react'
 import axios from 'axios';
 const NativeTransfer = (props) => {
-    const {email, walletaddress} = props
+    const {email} = props
     const [chain, setChain] = useState('mumbai')
     const [balance, setBalance] = useState('');
     const [receiver, setReceiver] = useState('');
