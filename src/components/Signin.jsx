@@ -6,8 +6,8 @@ import {Link, useNavigate } from 'react-router-dom'
 const Signin = () => {
     const navigate = useNavigate()
     const [email, setEmail] = useState('');
-    const [walletaddress, setWalletaddress] = useState('');
-    const api = "https://52.66.196.48:3002"
+    //const [walletaddress, setWalletaddress] = useState('');
+    const api = "http://52.66.196.48:3002"
 
     const handleChange = event => {
         setEmail(event.target.value);
@@ -27,7 +27,7 @@ const Signin = () => {
                 headers: { "Content-Type": "application/json" },
             }
             );
-            setWalletaddress(response.data.wallet.address);
+            //setWalletaddress(response.data.wallet.address);
             const waddress = response.data.wallet.address;
             console.log(waddress)
             navigate('/transfer', {state: {email, waddress}})
