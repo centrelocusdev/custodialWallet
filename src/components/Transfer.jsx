@@ -7,7 +7,7 @@ import {useLocation} from 'react-router-dom';
 
 const Transfer = () => {
   const location = useLocation()
-  const { email, walletaddress } = location.state
+  const { email, waddress } = location.state
   
   const tabs = ["Native Transfer", "ERC 20", "Recent Receipt"];
   const [tab, setTab] = useState(tabs[0]);
@@ -18,12 +18,12 @@ const Transfer = () => {
   console.log(tab);
 
   console.log("email: ", email)
-  console.log("walletaddress: ", walletaddress)
+  console.log("walletaddress: ", waddress)
 
   return (
     <>
     <h2 className="text-white w-fit float-right mr-16 -translate-y-16 px-4 py-2 border rounded-full text-center text-xl bg-transparent">
-    Wallet Address: {walletaddress}
+    Wallet Address: {waddress}
     </h2>
     <section className="pb-12 px-7 shadow-lg rounded w-fit mx-auto text-white">
       <nav className="flex justify-between text-[20px] font-semibold mb-4">
@@ -53,9 +53,9 @@ const Transfer = () => {
         </button>
       </nav>
       {/* passing email and walletaddress to other components */}
-      {tab === tabs[0] && <NativeTransfer email={email} walletaddress={walletaddress} />}
-      {tab === tabs[1] && <ERC20 email={email} walletaddress={walletaddress}/>}
-      {tab === tabs[2] && <RecentReceipt email={email} walletaddress={walletaddress} />}
+      {tab === tabs[0] && <NativeTransfer email={email} walletaddress={waddress} />}
+      {tab === tabs[1] && <ERC20 email={email} walletaddress={waddress}/>}
+      {tab === tabs[2] && <RecentReceipt email={email} walletaddress={waddress} />}
     </section>
     </>
   );

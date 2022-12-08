@@ -18,7 +18,7 @@ const Signin = () => {
 
     const wallet = async (e) => {
         e.preventDefault()
-        navigate('/transfer', {state: {email, walletaddress}})
+        
         const response = await axios.post(
             `${api}/wallet`,
             { email },
@@ -28,8 +28,10 @@ const Signin = () => {
             }
             );
             setWalletaddress(response.data.wallet.address);
-            //setwalletPrivatekey(response.data.wallet.privateKey);
-            //setLogin(true);
+            const waddress = response.data.wallet.address;
+            console.log(waddress)
+            navigate('/transfer', {state: {email, waddress}})
+            
             
     }
 
