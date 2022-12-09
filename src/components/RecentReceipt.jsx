@@ -9,7 +9,7 @@ const RecentReceipt = (props) => {
     const [to, setTo] = useState('');
     const [from, setFrom] = useState('');
     const [amount, setAmount] = useState('');
-
+    const [recentReceipts, setRecentReceipts] = useState([]);
 
     const txActivity = async (walletAddress, provider) => {
 
@@ -32,16 +32,15 @@ const RecentReceipt = (props) => {
     &apikey=${apikey}`);
 
 
-        const arr = etherscan.data.results;
-        console.log(arr);
+        setRecentReceipts(etherscan.data.results)
+        console.log(recentReceipts.length)
 
-
-        if (arr.length == 0) {
+        if (recentReceipts.length == 0) {
             return "No Transactions"
         }
         else {
-            //console.log(arr);
-            const result = arr[arr.length - 1]
+            //console.log(recentReceipts);
+            const result = recentReceipts[recentReceipts.length - 1]
             setAmount(ethers.utils.formatUnits(result.value, "ether"));
             setTo(result.to);
             setFrom(result.from);
@@ -49,11 +48,12 @@ const RecentReceipt = (props) => {
         }
     }
 
-    return <section className="py-12 px-7 shadow-lg rounded-2xl w-fit mx-auto bg-[#141E2F] text-[20px]">
+    return <section className="w-full py-12 px-7 shadow-lg rounded-2xl w-fit mx-auto bg-[#141E2F] text-[20px]">
         {
-            recentReceipts.map((rec, i) => (
+            recentReceipts.length ?  recentReceipts.map((rec, i) => (
                 <Receipt rec={rec} key={i} />
-            ))
+            )) : <div className="text-2xl text-center">No Transaction</div>
+           
         }
 
     </section>
@@ -73,7 +73,7 @@ const Receipt = ({ rec }) => {
     </div>
 }
 
-const recentReceipts = [
+const recentReceiptsTemp = [
     {
         amount: '1.222',
         to: '0xCA9bB13e14574008632F59F7c064f2908eB80259'
