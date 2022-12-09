@@ -45,7 +45,6 @@ const Signin = () => {
         {/* <input type="submit" value="Sign In" className="text-[#262E38] font-semibold bg-white text-center rounded-full w-full p-4 my-3 text-[16px] hover:bg-gray-200 cursor-pointer" /> */}
         <button type="submit" className="text-[#262E38] font-semibold bg-white text-center rounded-full w-full p-4 my-3 text-[16px] hover:bg-gray-200 cursor-pointer">Sign In</button>
         </form>
-        <p className="text-[#929292] text-left">Don't have an account?  <a href="/" className="text-[#17987F] font-semibold hover:text-white">Sign Up</a></p>
     </section>
 }
 

@@ -58,7 +58,7 @@ const ERC20 = (props) => {
                     <input type="text" value={amount} onChange={handleAmountInput} placeholder="Amount" className="text-[#929292] bg-[#263140] rounded-full w-full p-4 m-3 text-[16px] w-[30%] text-center" />
                 </div>
 
-                <button onClick={tokenTransfer} type="submit" value="Transfer" className="text-white bg-[#17987F] text-center rounded-full w-full p-4 my-3 text-[16px] hover:bg-gray-200 cursor-pointer" />
+                <button onClick={tokenTransfer} type="submit" className="text-white bg-[#17987F] text-center rounded-full w-full p-4 my-3 text-[16px] hover:bg-gray-200 cursor-pointer" >Transfer</button>
 								
            </section>
 }

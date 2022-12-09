@@ -7,7 +7,7 @@ import {useLocation} from 'react-router-dom';
 
 const Transfer = () => {
   const location = useLocation()
-  const { email, waddress } = location.state ? location.state : {email:'k315@gmail.com', waddress: '0x94fd4A135D3797bdb5e1b63e26BAc50a07dAc49F'}
+  const { email, waddress } = location.state
   
   const tabs = ["Native Transfer", "ERC 20", "Recent Receipt"];
   const [tab, setTab] = useState(tabs[0]);
@@ -22,7 +22,7 @@ const Transfer = () => {
 
   return (
     <section className="flex flex-col">
-    <div className="text-white w-fit float-right  translate-x-[125%] -translate-y-16  px-4 py-2 border rounded-full text-center text-xl bg-transparent">
+    <div className="text-white w-fit float-right mx-auto mb-5  px-4 py-2 border rounded-full text-center text-xl bg-transparent">
     Wallet Address: {waddress}
     </div>
     <section className="pb-12 px-7 shadow-lg rounded w-fit mx-auto text-white">
