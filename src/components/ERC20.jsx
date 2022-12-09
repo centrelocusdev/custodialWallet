@@ -12,7 +12,7 @@ const ERC20 = (props) => {
 
     const tokenTransfer = async () => {
 
-      const provider = ''
+      let provider = ''
       if(chain === "ethereum"){
 
         provider = ''
