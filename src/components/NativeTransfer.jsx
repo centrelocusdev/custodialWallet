@@ -43,7 +43,7 @@ const NativeTransfer = (props) => {
     const send = async () => {
       const response = await axios.post(
         `${api}/send`,
-        { email, amount, receiver, chain },
+        { email, amount, receiver, provider },
         { withCredentials: true },
         {
           headers: { "Content-Type": "application/json" },
