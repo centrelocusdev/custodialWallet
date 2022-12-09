@@ -7,7 +7,7 @@ import {useLocation} from 'react-router-dom';
 
 const Transfer = () => {
   const location = useLocation()
-  const { email, waddress } = location.state ? location.state : {email:'hi@test.com', waddress: '0x94fd4A135D3797bdb5e1b63e26BAc50a07dAc49F'}
+  const { email, waddress } = location.state
   
   const tabs = ["Native Transfer", "ERC 20", "Recent Receipt"];
   const [tab, setTab] = useState(tabs[0]);

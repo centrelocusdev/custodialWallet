@@ -35,7 +35,7 @@ const NativeTransfer = (props) => {
           }
         );
         setBalance(response.data);
-          console.log(response.data);
+        console.log(response.data);
       
     }
 
