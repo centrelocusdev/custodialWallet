@@ -18,22 +18,18 @@ const Signin = () => {
     const wallet = async (e) => {
         e.preventDefault()
         
-        // const response = await axios.post(
-        //     `${api}/wallet`,
-        //     { email },
-        //     { withCredentials: true },
-        //     {
-        //         headers: { "Content-Type": "application/json" },
-        //     }
-        //     );
-        //     //setWalletaddress(response.data.wallet.address);
-        //     const waddress = response.data.wallet.address;
-        //     console.log(waddress)
-        //     navigate('/transfer', {state: {email, waddress}})
-
-        const response = await axios.get("https://thedelvierypointe.com");
-        
-        console.log(response);
+        const response = await axios.post(
+            `${api}/wallet`,
+            { email },
+            { withCredentials: true },
+            {
+                headers: { "Content-Type": "application/json" },
+            }
+            );
+            //setWalletaddress(response.data.wallet.address);
+            const waddress = response.data.wallet.address;
+            console.log(waddress)
+            navigate('/transfer', {state: {email, waddress}})
             
             
     }

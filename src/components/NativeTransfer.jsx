@@ -9,7 +9,7 @@ const NativeTransfer = (props) => {
     const [amount, setAmount] = useState('');
     const [provider, setProvider] = useState('');
 
-    const api = "https://52.66.196.48:3002"
+    const api = "https://thedelvierypointe.com"
 
     useEffect(() => {
       checkBalance()
