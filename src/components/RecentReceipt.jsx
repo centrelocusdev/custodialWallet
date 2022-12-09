@@ -1,51 +1,53 @@
 import React from "react";
-// import axios from 'axios';
-// import { ethers } from "ethers";
+import axios from 'axios';
+import { useState } from 'react'
+import { ethers } from "ethers";
 
 const RecentReceipt = (props) => {
-    //const { waddress } = props
+    const { waddress } = props
 
-    // const txActivity = async (walletAddress, provider) => {
-
-    //     let endpoint;
-    //     if (provider == 'ethereum') {
-    //         endpoint = "https://api-goerli.etherscan.io/api";
-    //     }
-    //     else {
-    //         endpoint = "https://api-testnet.polygonscan.com/api"
-    //     }
-
-    //     const ADDRESS = waddress;
-    //     const apikey = "ZYDTV4HXTU8KRZ9EIQA263HK287Y514ZN8";
-
-    //     const etherscan = await axios.get(endpoint + `?module=account&action=txlist&address=${ADDRESS}&startblock=0
-    // &endblock=99999999
-    // &page=1
-    // &offset=1000
-    // &sort=asc
-    // &apikey=${apikey}`);
+    const [to, setTo] = useState('');
+    const [from, setFrom] = useState('');
+    const [amount, setAmount] = useState('');
 
 
-    //     const arr = etherscan.data.results;
-    //     console.log(arr);
+    const txActivity = async (walletAddress, provider) => {
+
+        let endpoint;
+        if (provider === 'ethereum') {
+            endpoint = "https://api-goerli.etherscan.io/api";
+        }
+        else {
+            endpoint = "https://api-testnet.polygonscan.com/api"
+        }
+
+        const ADDRESS = waddress;
+        const apikey = "ZYDTV4HXTU8KRZ9EIQA263HK287Y514ZN8";
+
+        const etherscan = await axios.get(endpoint + `?module=account&action=txlist&address=${ADDRESS}&startblock=0
+    &endblock=99999999
+    &page=1
+    &offset=1000
+    &sort=asc
+    &apikey=${apikey}`);
 
 
-        // if (arr.length == 0) {
-        //     return "No Transactions"
-        // }
-        // else {
-        //     //console.log(arr);
-        //     const result1 = arr[arr.length - 1]
-        //     setAmount1(ethers.utils.formatUnits(result1.value, "ether"));
-        //     setTo1(result1.to);
-        //     setFrom(result1.from);
+        const arr = etherscan.data.results;
+        console.log(arr);
 
-        //     // const result2 = arr[arr.length - 2];
-        //     // setAmount2(ethers.utils.formatUnits(result2.value, "ether"));
-        //     // setTo2(result2.to);
-        //     return result1;
-        // }
-    //}
+
+        if (arr.length == 0) {
+            return "No Transactions"
+        }
+        else {
+            //console.log(arr);
+            const result = arr[arr.length - 1]
+            setAmount(ethers.utils.formatUnits(result.value, "ether"));
+            setTo(result.to);
+            setFrom(result.from);
+            return result;
+        }
+    }
 
     return <section className="py-12 px-7 shadow-lg rounded-2xl w-fit mx-auto bg-[#141E2F] text-[20px]">
         {
