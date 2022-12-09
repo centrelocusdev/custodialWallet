@@ -12,6 +12,8 @@ const ERC20 = (props) => {
     const api = "https://thedelvierypointe.com"
 
     const tokenTransfer = async () => {
+      console.log(tokenaddress);
+      console.log(amount);
         const response = await axios.post(
           `${api}/tknTransfer`,
           { email, amount, receiver, chain, tokenaddress },
