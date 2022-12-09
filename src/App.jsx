@@ -1,9 +1,6 @@
 import React, {lazy, Suspense} from "react";
 import { Routes, Route} from 'react-router-dom'
 import Navbar from './components/Navbar'
-// import NativeTransfer from "./components/NativeTransfer";
-// import ERC20 from "./components/ERC20";
-// import RecentReceipt from "./components/RecentReceipt";
 
 const SigninPage = lazy(() => import("./pages/SigninPage"))
 const TransferPage = lazy(() => import("./pages/TransferPage"))

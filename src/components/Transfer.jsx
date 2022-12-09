@@ -22,7 +22,7 @@ const Transfer = () => {
 
   return (
     <section className="flex flex-col">
-    <div className="text-white w-fit float-right mr-16 px-4 py-2 border rounded-full text-center text-xl bg-transparent">
+    <div className="text-white w-fit float-right  translate-x-[125%] -translate-y-16  px-4 py-2 border rounded-full text-center text-xl bg-transparent">
     Wallet Address: {waddress}
     </div>
     <section className="pb-12 px-7 shadow-lg rounded w-fit mx-auto text-white">
