@@ -12,13 +12,7 @@ const ERC20 = (props) => {
     const api = "https://thedelvierypointe.com"
 
     const tokenTransfer = async () => {
-      if(chain === "ethereum"){
-
-        setProvider()
-      }
-      else {
-        setProvider("https://rpc-mumbai.maticvigil.com")
-      }
+     
       console.log(tokenaddress);
       console.log(amount);
       console.log(provider);
@@ -33,7 +27,16 @@ const ERC20 = (props) => {
         console.log(response.data);
        }
       
-    const handleChange = (e) => setChain(e.target.value)
+    const handleChange = (e) => {
+      setChain(e.target.value)
+      if(e.target.value === "ethereum"){
+
+        setProvider('')
+      }
+      else {
+        setProvider("https://rpc-mumbai.maticvigil.com")
+      }
+    }
     const handleReceiverInput = (e) => setReceiver(e.target.value)
     const handleAmountInput = (e) => setAmount(e.target.value)
     const handleTokenInput = (e) => setTokenaddress(e.target.value)
