@@ -7,7 +7,7 @@ import {useLocation} from 'react-router-dom';
 
 const Transfer = () => {
   const location = useLocation()
-  const { email, waddress } = location.state
+  const { email, waddress } = location.state ? location.state : {email:'hi@test.com', waddress: '0x94fd4A135D3797bdb5e1b63e26BAc50a07dAc49F'}
   
   const tabs = ["Native Transfer", "ERC 20", "Recent Receipt"];
   const [tab, setTab] = useState(tabs[0]);
@@ -21,10 +21,10 @@ const Transfer = () => {
   console.log("walletaddress: ", waddress)
 
   return (
-    <>
-    <h2 className="text-white w-fit float-right mr-16 -translate-y-16 px-4 py-2 border rounded-full text-center text-xl bg-transparent">
+    <section className="flex flex-col">
+    <div className="text-white w-fit float-right mr-16 px-4 py-2 border rounded-full text-center text-xl bg-transparent">
     Wallet Address: {waddress}
-    </h2>
+    </div>
     <section className="pb-12 px-7 shadow-lg rounded w-fit mx-auto text-white">
       <nav className="flex justify-between text-[20px] font-semibold mb-4">
         <button
@@ -57,7 +57,7 @@ const Transfer = () => {
       {tab === tabs[1] && <ERC20 email={email} walletaddress={waddress}/>}
       {tab === tabs[2] && <RecentReceipt email={email} walletaddress={waddress} />}
     </section>
-    </>
+    </section>
   );
 };
 
