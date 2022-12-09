@@ -16,19 +16,11 @@ const NativeTransfer = (props) => {
     })
 
     const checkBalance = async () => {
-        if(chain === "ethereum"){
-          setProvider("rpcUrl")
-        }
-        else if(chain === 'mumbai'){
-          setProvider("https://rpc-mumbai.maticvigil.com");
-        }
-        else{
-          setProvider("")
-        }
+      
         
         const response = await axios.post(
           `${api}/balance`,
-          { email, provider },
+          { email, chain },
           { withCredentials: true },
           {
             headers: { "Content-Type": "application/json" },
@@ -41,18 +33,10 @@ const NativeTransfer = (props) => {
 
     //Transfer
     const send = async () => {
-      if(chain === "ethereum"){
-        setProvider("rpcUrl")
-      }
-      else if(chain === 'mumbai'){
-        setProvider("https://rpc-mumbai.maticvigil.com");
-      }
-      else{
-        setProvider("")
-      }
+    
       const response = await axios.post(
         `${api}/send`,
-        { email, amount, receiver, provider },
+        { email, amount, receiver, chain },
         { withCredentials: true },
         {
           headers: { "Content-Type": "application/json" },

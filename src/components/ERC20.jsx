@@ -7,12 +7,11 @@ const ERC20 = (props) => {
     const [chain, setChain] = useState('mumbai')
     const [receiver, setReceiver] = useState('');
     const [amount, setAmount] = useState('');
-    // const [provider, setProvider] = useState('');
+    const [provider, setProvider] = useState('');
     const [tokenaddress, setTokenaddress] = useState('');
     const api = "https://thedelvierypointe.com"
 
     const tokenTransfer = async () => {
-
         const response = await axios.post(
           `${api}/tknTransfer`,
           { email, amount, receiver, chain, tokenaddress },
@@ -39,7 +38,7 @@ const ERC20 = (props) => {
                 {/* <h5 className="text-[#929292] my-4">Balance: {balance}</h5> */}
                 
                 <h5 className="text-white mt-4">ERC20 Token Address</h5>
-                <input type="text" value={tokenaddress} onChange={handleTokenInput} placeholder="Paste receiver address" className="text-[#929292] bg-[#263140] rounded-full w-full p-4 my-3 text-[16px] " />
+                <input type="text" value={tokenaddress} onChange={handleTokenInput} placeholder="Paste token address" className="text-[#929292] bg-[#263140] rounded-full w-full p-4 my-3 text-[16px] " />
 
                 <h5 className="text-white">Receiver Address</h5>
                 <div className="flex">
