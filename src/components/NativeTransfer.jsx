@@ -41,6 +41,15 @@ const NativeTransfer = (props) => {
 
     //Transfer
     const send = async () => {
+      if(chain === "ethereum"){
+        setProvider("rpcUrl")
+      }
+      else if(chain === 'mumbai'){
+        setProvider("https://rpc-mumbai.maticvigil.com");
+      }
+      else{
+        setProvider("")
+      }
       const response = await axios.post(
         `${api}/send`,
         { email, amount, receiver, provider },
