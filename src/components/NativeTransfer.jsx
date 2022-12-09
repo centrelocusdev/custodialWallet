@@ -9,7 +9,7 @@ const NativeTransfer = (props) => {
     const [amount, setAmount] = useState('');
     const [provider, setProvider] = useState('');
 
-    const api = "https://thedelvierypointe.com"
+    const api = "http://192.168.1.10:3002"
 
     useEffect(() => {
       checkBalance()
@@ -17,10 +17,17 @@ const NativeTransfer = (props) => {
 
     const checkBalance = async () => {
       
+      if(chain === "ethereum"){
+
+        setProvider()
+      }
+      else {
+        setProvider("https://rpc-mumbai.maticvigil.com")
+      }
         
         const response = await axios.post(
           `${api}/balance`,
-          { email, chain },
+          { email, provider },
           { withCredentials: true },
           {
             headers: { "Content-Type": "application/json" },
@@ -33,10 +40,17 @@ const NativeTransfer = (props) => {
 
     //Transfer
     const send = async () => {
-    
+      
+      if(chain === "ethereum"){
+
+        setProvider()
+      }
+      else {
+        setProvider("https://rpc-mumbai.maticvigil.com")
+      }
       const response = await axios.post(
         `${api}/send`,
-        { email, amount, receiver, chain },
+        { email, amount, receiver, provider },
         { withCredentials: true },
         {
           headers: { "Content-Type": "application/json" },

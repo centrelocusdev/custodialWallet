@@ -9,14 +9,22 @@ const ERC20 = (props) => {
     const [amount, setAmount] = useState('');
     const [provider, setProvider] = useState('');
     const [tokenaddress, setTokenaddress] = useState('');
-    const api = "https://thedelvierypointe.com"
+    const api = "http://192.168.1.10:3002"
 
     const tokenTransfer = async () => {
+      if(chain === "ethereum"){
+
+        setProvider()
+      }
+      else {
+        setProvider("https://rpc-mumbai.maticvigil.com")
+      }
       console.log(tokenaddress);
       console.log(amount);
+      console.log(provider);
         const response = await axios.post(
           `${api}/tknTransfer`,
-          { email, amount, receiver, chain, tokenaddress },
+          { email, amount, receiver, provider, tokenaddress },
           { withCredentials: true },
           {
             headers: { "Content-Type": "application/json" },

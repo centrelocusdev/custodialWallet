@@ -7,7 +7,7 @@ const Signin = () => {
     const navigate = useNavigate()
     const [email, setEmail] = useState('');
     //const [walletaddress, setWalletaddress] = useState('');
-    const api = "https://thedelvierypointe.com"
+    const api = "http://192.168.1.10:3002"
 
     const handleChange = event => {
         setEmail(event.target.value);
