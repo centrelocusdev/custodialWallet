@@ -14,6 +14,10 @@ const NativeTransfer = (props) => {
   const api = "https://thedelvierypointe.com";
                   
   useEffect(() => {
+    checkBalance();
+  }, []);
+
+  const checkBalance = async () => {
     if (chain === "ethereum") {
       setProvider(
         "https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161"
@@ -21,10 +25,7 @@ const NativeTransfer = (props) => {
     } else {
       setProvider("https://rpc-mumbai.maticvigil.com");
     }
-    checkBalance();
-  }, []);
 
-  const checkBalance = async () => {
     const response = await axios.post(
       `${api}/balance`,
       { email, provider },
@@ -40,6 +41,13 @@ const NativeTransfer = (props) => {
   //Transfer
   const send = async () => {
     setLoading(true);
+
+    if (chain === "ethereum") {
+      setProvider();
+    } else {
+      setProvider("https://rpc-mumbai.maticvigil.com");
+    }
+
     try {
       const response = await axios.post(
         `${api}/send`,
