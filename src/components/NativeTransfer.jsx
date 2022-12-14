@@ -57,7 +57,7 @@ const NativeTransfer = (props) => {
           headers: { "Content-Type": "application/json" },
         }
       );
-
+        console.log(response.data)
       if (
         response.data.message !== "OK" ||
         response.status !== "1" ||
