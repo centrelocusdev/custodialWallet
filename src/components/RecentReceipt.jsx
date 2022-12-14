@@ -6,11 +6,12 @@ import { ethers } from "ethers";
 const RecentReceipt = (props) => {
     const { walletaddress } = props
     console.log(walletaddress);
-
+    
     // const [to1, setTo] = useState('');
     // const [from1, setFrom] = useState('');
     // const [amount1, setAmount] = useState('');
     const [recentReceipts, setRecentReceipts] = useState([]);
+    const [chain, setChain] = useState('mumbai')
 
     const txActivity = async (walletAddress, provider) => {
 
@@ -50,10 +51,15 @@ const RecentReceipt = (props) => {
             return result;
         }
     }
+    const handleChange = (e) => setChain(e.target.value)
 
     txActivity();
 
     return <section className="w-full py-12 px-7 shadow-lg rounded-2xl w-fit mx-auto bg-[#141E2F] text-[20px]">
+        <select value={chain} onChange={handleChange} className='p-4 rounded-full bg-[#263140] text-[#929292] w-full px-7'>
+            <option value="mumbai" className="py-4 text-[#929292]">Mumbai</option>
+            <option value="ethereum" className="py-4 text-[#929292]">Ethereum</option>
+        </select>
         {
             recentReceipts.length ?  recentReceipts.map((rec, i) => (
                 <Receipt rec={rec} key={i} />
