@@ -12,7 +12,7 @@ const NativeTransfer = (props) => {
   const [loading, setLoading] = useState(false);
 
   const api = "https://thedelvierypointe.com";
-
+                  
   useEffect(() => {
     checkBalance();
   }, []);

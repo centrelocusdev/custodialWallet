@@ -98,7 +98,7 @@ const ERC20 = (props) => {
           className="text-[#929292] bg-[#263140] rounded-full w-full p-4 m-3 text-[16px] w-[30%] text-center"
         />
       </div>
-
+               
       <button
         onClick={tokenTransfer}
         type="submit"

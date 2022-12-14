@@ -111,6 +111,6 @@ const Receipt = ({ rec, explorer }) => {
             <a href='/' className="text-[#17987F]">{explorer}</a>
         </div>
     </div>
-};
+};                        
 
 export default RecentReceipt;
