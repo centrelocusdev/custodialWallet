@@ -13,7 +13,7 @@ const NativeTransfer = (props) => {
 
     useEffect(() => {
       checkBalance()
-    })
+    },[])
 
     const checkBalance = async () => {
       
