@@ -12,15 +12,18 @@ const RecentReceipt = (props) => {
     // const [amount1, setAmount] = useState('');
     const [recentReceipts, setRecentReceipts] = useState([]);
     const [chain, setChain] = useState('mumbai')
+    const [explorer, setExplorer] = useState('');
 
     const txActivity = async (walletAddress, provider) => {
 
         let endpoint;
         if (chain === 'ethereum') {
             endpoint = "https://api-goerli.etherscan.io/api";
+            setExplorer('https://goerli.etherscan.io/tx/')
         }
         else {
             endpoint = "https://api-testnet.polygonscan.com/api"
+            setExplorer('https://mumbai.polygonscan.com/tx/');
         }
 
         const ADDRESS = walletaddress;
@@ -62,7 +65,7 @@ const RecentReceipt = (props) => {
         </select>
         {
             recentReceipts.length ?  recentReceipts.map((rec, i) => (
-                <Receipt rec={rec} key={i} />
+                <Receipt rec={rec} key={i} explorer={explorer} />
             )) : <div className="text-2xl text-center">No Transaction</div>
            
         }
@@ -70,7 +73,7 @@ const RecentReceipt = (props) => {
     </section>
 }
 
-const Receipt = ({ rec }) => {
+const Receipt = ({ rec }, explorer) => {
     return <div className="rounded-2xl m-5  text-[20px] rounded-2xl text-[#929292] shadow-lg">
         <div className="rounded-2xl rounded-b bg-[#263140] p-2 text-white">Amount: {ethers.utils.formatUnits(rec.value, "ether")}</div>
 
@@ -79,7 +82,7 @@ const Receipt = ({ rec }) => {
                 <h5>to:</h5>
                 <h5>{rec.to}</h5>
             </div>
-            <a href="https://mumbai.polygonscan.com/tx/0x15b962b7d08ae74f0937ce9b4f1e3a6fce86d7c0a8bcbda02f3c174ad1b7642c" className="text-[#17987F]">View Transaction</a>
+            <a href={explorer + `${rec.hash}`} className="text-[#17987F]">View Transaction</a>
         </div>
     </div>
 }

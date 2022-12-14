@@ -57,6 +57,7 @@ const NativeTransfer = (props) => {
         }
       );
       console.log(response.data);
+      alert(response.data.hash);
       checkBalance(); //calling after transfer
     }
 

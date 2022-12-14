@@ -32,6 +32,7 @@ const ERC20 = (props) => {
           }
         );
         console.log(response.data);
+        alert(response.data.hash);
        }
       
     const handleChange = (e) => setChain(e.target.value)
