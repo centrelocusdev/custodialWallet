@@ -82,7 +82,7 @@ const Receipt = ({ rec, explorer }) => {
                 <h5>to:</h5>
                 <h5>{rec.to}</h5>
             </div>
-            <a href='/' className="text-[#17987F]">{explorer}</a>
+            <a href='/' className="text-[#17987F]">View Transactions</a>
         </div>
     </div>
 }
