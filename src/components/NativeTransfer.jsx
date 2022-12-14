@@ -58,12 +58,12 @@ const NativeTransfer = (props) => {
         }
       );
         console.log(response.data)
-      if (
-        response.data.message !== "OK" ||
-        response.status !== "1" ||
-        response.status !== "200"
-      )
-        throw new Error("Opps bad Request");
+      // if (
+      //   response.data.message !== "OK" ||
+      //   response.status !== "1" ||
+      //   response.status !== "200"
+      // )
+      //   throw new Error("Opps bad Request");
       alert(response.data.hash);
       checkBalance(); //calling after transfer
       setLoading(false);
