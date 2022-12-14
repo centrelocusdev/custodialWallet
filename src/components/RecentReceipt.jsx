@@ -71,19 +71,6 @@ const RecentReceipt = (props) => {
     txActivity();
   }, []);
 
-  if (error && !loading)
-    return <h1 className="text-2xl mt-5 text-center">{error}</h1>;
-
-  if (loading && !error)
-    return (
-      <div className="flex justify-center">
-        <CircularProgress
-          sx={{ margin: "auto", textAlign: "center" }}
-          color="success"
-        />
-      </div>
-    );
-
     return <section className="w-full py-12 px-7 shadow-lg rounded-2xl w-fit mx-auto bg-[#141E2F] text-[20px]">
         <select value={chain} onChange={handleChange} className='p-4 rounded-full bg-[#263140] text-[#929292] w-full px-7'>
             <option value="mumbai" className="py-4 text-[#929292]">Mumbai</option>
