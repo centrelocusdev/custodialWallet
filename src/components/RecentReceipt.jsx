@@ -4,11 +4,12 @@ import { useState } from 'react'
 import { ethers } from "ethers";
 
 const RecentReceipt = (props) => {
-    const { waddress } = props
+    const { walletaddress } = props
+    console.log(walletaddress);
 
-    const [to, setTo] = useState('');
-    const [from, setFrom] = useState('');
-    const [amount, setAmount] = useState('');
+    // const [to1, setTo] = useState('');
+    // const [from1, setFrom] = useState('');
+    // const [amount1, setAmount] = useState('');
     const [recentReceipts, setRecentReceipts] = useState([]);
 
     const txActivity = async (walletAddress, provider) => {
@@ -21,32 +22,36 @@ const RecentReceipt = (props) => {
             endpoint = "https://api-testnet.polygonscan.com/api"
         }
 
-        const ADDRESS = waddress;
+        const ADDRESS = walletaddress;
         const apikey = "ZYDTV4HXTU8KRZ9EIQA263HK287Y514ZN8";
 
         const etherscan = await axios.get(endpoint + `?module=account&action=txlist&address=${ADDRESS}&startblock=0
     &endblock=99999999
     &page=1
     &offset=1000
-    &sort=asc
+    &sort=desc
     &apikey=${apikey}`);
 
 
-        setRecentReceipts(etherscan.data.results)
-        console.log(recentReceipts.length)
+        const arr = etherscan.data.result;
+        setRecentReceipts(arr.reverse());
+        console.log(arr)
 
-        if (recentReceipts.length == 0) {
+        if (recentReceipts.length === 0) {
             return "No Transactions"
         }
         else {
             //console.log(recentReceipts);
             const result = recentReceipts[recentReceipts.length - 1]
-            setAmount(ethers.utils.formatUnits(result.value, "ether"));
-            setTo(result.to);
-            setFrom(result.from);
+            console.log(result);
+            // setAmount(ethers.utils.formatUnits(result.value, "ether"));
+            // setTo(result.to);
+            // setFrom(result.from);
             return result;
         }
     }
+
+    txActivity();
 
     return <section className="w-full py-12 px-7 shadow-lg rounded-2xl w-fit mx-auto bg-[#141E2F] text-[20px]">
         {
@@ -61,7 +66,7 @@ const RecentReceipt = (props) => {
 
 const Receipt = ({ rec }) => {
     return <div className="rounded-2xl m-5  text-[20px] rounded-2xl text-[#929292] shadow-lg">
-        <div className="rounded-2xl rounded-b bg-[#263140] p-2 text-white">Amount: {rec.amount}</div>
+        <div className="rounded-2xl rounded-b bg-[#263140] p-2 text-white">Amount: {ethers.utils.formatUnits(rec.value, "ether")}</div>
 
         <div className="p-3">
             <div className="text-[#929292">
@@ -73,20 +78,6 @@ const Receipt = ({ rec }) => {
     </div>
 }
 
-const recentReceiptsTemp = [
-    {
-        amount: '1.222',
-        to: '0xCA9bB13e14574008632F59F7c064f2908eB80259'
-    },
-    {
-        amount: '1.333',
-        to: '0xCA9bB13e14574008632F59F7c064f2908eB80259'
-    },
-    {
-        amount: '1.444',
-        to: '0xCA9bB13e14574008632F59F7c064f2908eB80259'
-    },
 
-]
 
 export default RecentReceipt
