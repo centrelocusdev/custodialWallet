@@ -65,7 +65,7 @@ const RecentReceipt = (props) => {
         </select>
         {
             recentReceipts.length ?  recentReceipts.map((rec, i) => (
-                <Receipt rec={rec} key={i} explorer={explorer} />
+                <Receipt rec={rec} key={i} />
             )) : <div className="text-2xl text-center">No Transaction</div>
            
         }
@@ -73,7 +73,7 @@ const RecentReceipt = (props) => {
     </section>
 }
 
-const Receipt = ({ rec, explorer }) => {
+const Receipt = ({ rec }) => {
     return <div className="rounded-2xl m-5  text-[20px] rounded-2xl text-[#929292] shadow-lg">
         <div className="rounded-2xl rounded-b bg-[#263140] p-2 text-white">Amount: {ethers.utils.formatUnits(rec.value, "ether")}</div>
 
