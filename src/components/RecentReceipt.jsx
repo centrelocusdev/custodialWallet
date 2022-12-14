@@ -55,11 +55,10 @@ const RecentReceipt = (props) => {
       setTo(result.to);
       setFrom(result.from);
       setLoading(false);
-      serError(null);
+      setError(null);
       return result;
-
     } catch (e) {
-      console.log(e.message)
+      console.log(e.message);
       // setError(e.message);
       setLoading(false);
     }
@@ -73,10 +72,18 @@ const RecentReceipt = (props) => {
   if (error && !loading)
     return <h1 className="text-2xl mt-5 text-center">{error}</h1>;
 
-  if (loading && !error) return <CircularProgress sx={{margin:'auto'}} color="success" />;
+  if (loading && !error)
+    return (
+      <div className="flex justify-center">
+        <CircularProgress
+          sx={{ margin: "auto", textAlign: "center" }}
+          color="success"
+        />
+      </div>
+    );
 
   return (
-    <section className="w-full py-12 px-7 shadow-lg rounded-2xl w-fit mx-auto bg-[#141E2F] text-[20px]">
+    <section className=" py-12 px-7 shadow-lg rounded-2xl w-fit mx-auto bg-[#141E2F] text-[20px]">
       <select
         value={chain}
         onChange={handleChange}
@@ -89,7 +96,7 @@ const RecentReceipt = (props) => {
           Ethereum
         </option>
       </select>
-      {recentReceipts.length > 0 ? (
+      {recentReceipts.length && !loading ? (
         recentReceipts.map((rec, i) => (
           <Receipt rec={rec} key={i} explorer={explorer} />
         ))
