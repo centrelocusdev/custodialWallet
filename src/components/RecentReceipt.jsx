@@ -16,7 +16,7 @@ const RecentReceipt = (props) => {
     const txActivity = async (walletAddress, provider) => {
 
         let endpoint;
-        if (provider === 'ethereum') {
+        if (chain === 'ethereum') {
             endpoint = "https://api-goerli.etherscan.io/api";
         }
         else {
