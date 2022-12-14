@@ -108,7 +108,7 @@ const Receipt = ({ rec, explorer }) => {
                 <h5>to:</h5>
                 <h5>{rec.to}</h5>
             </div>
-            <a href={explorer} className="text-[#17987F] font-semibold">View Transaction</a>
+            <a href={explorer + rec.hash} className="text-[#17987F] font-semibold">View Transaction</a>
         </div>
     </div>
 };                        
