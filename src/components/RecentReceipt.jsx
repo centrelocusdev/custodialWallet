@@ -73,7 +73,7 @@ const RecentReceipt = (props) => {
     </section>
 }
 
-const Receipt = ({ rec }, explorer) => {
+const Receipt = ({ rec, explorer }) => {
     return <div className="rounded-2xl m-5  text-[20px] rounded-2xl text-[#929292] shadow-lg">
         <div className="rounded-2xl rounded-b bg-[#263140] p-2 text-white">Amount: {ethers.utils.formatUnits(rec.value, "ether")}</div>
 
@@ -82,7 +82,7 @@ const Receipt = ({ rec }, explorer) => {
                 <h5>to:</h5>
                 <h5>{rec.to}</h5>
             </div>
-            <a href={explorer} className="text-[#17987F]">View Transaction</a>
+            <a href={explorer} className="text-[#17987F]">{explorer}</a>
         </div>
     </div>
 }
