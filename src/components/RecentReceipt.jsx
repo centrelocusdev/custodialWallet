@@ -73,7 +73,7 @@ const Receipt = ({ rec }) => {
                 <h5>to:</h5>
                 <h5>{rec.to}</h5>
             </div>
-            <a href="/" className="text-[#17987F]">View Transaction</a>
+            <a href="https://mumbai.polygonscan.com/tx/0x15b962b7d08ae74f0937ce9b4f1e3a6fce86d7c0a8bcbda02f3c174ad1b7642c" className="text-[#17987F]">View Transaction</a>
         </div>
     </div>
 }
