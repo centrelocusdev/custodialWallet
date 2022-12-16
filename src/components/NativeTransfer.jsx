@@ -63,13 +63,13 @@ const NativeTransfer = (props) => {
           headers: { "Content-Type": "application/json" },
         }
       );
-
-      if (
-        response.data.message !== "OK" ||
-        response.status !== "1" ||
-        response.status !== "200"
-      )
-        throw new Error("Opps bad Request");
+        // Do not add this
+      // if (
+      //   response.data.message !== "OK" ||
+      //   response.status !== "1" ||
+      //   response.status !== "200"
+      // )
+      //   throw new Error("Opps bad Request");
       alert(response.data.hash);
       checkBalance(); //calling after transfer
       setLoading(false);
