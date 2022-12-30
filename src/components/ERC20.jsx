@@ -10,13 +10,14 @@ const ERC20 = (props) => {
   const [amount, setAmount] = useState("");
   const [tokenaddress, setTokenaddress] = useState("");
   const [loading, setLoading] = useState(false);
+  const [tokenbalance, setTokenbalance] = useState('');
   const api = "https://thedelvierypointe.com";
 
   const tokenTransfer = async () => {
     setLoading(true);
     let provider = "";
     if (chain === "ethereum") {
-      provider = "";
+      provider = "https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161";
     } else {
       provider = "https://rpc-mumbai.maticvigil.com";
     }
@@ -32,19 +33,42 @@ const ERC20 = (props) => {
           headers: { "Content-Type": "application/json" },
         }
       );
-      if (
-        response.data.message !== "OK" ||
-        response.status !== "1" ||
-        response.status !== "200"
-      )
-        throw new Error("Opps bad Request");
+      // if (
+      //   response.data.message !== "OK" ||
+      //   response.status !== "1" ||
+      //   response.status !== "200"
+      // )
+      //   throw new Error("Opps bad Request");
       console.log(response.data);
       alert(response.data.hash);
+      setLoading(false);
     } catch (e) {
       alert(e.message);
       setLoading(false);
     }
   };
+
+  const tokenBalance = async () => {
+    let provider = "";
+    if (chain === "ethereum") {
+      provider = "https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161";
+    } else {
+      provider = "https://rpc-mumbai.maticvigil.com";
+    }
+
+    const response = await axios.post(
+      `${api}/tokenBalance`,
+      { email, provider, tokenaddress },
+      { withCredentials: true },
+      {
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+    setTokenbalance(response.data);
+    console.log(response.data);
+
+
+  }
 
   const handleChange = (e) => setChain(e.target.value);
   const handleReceiverInput = (e) => setReceiver(e.target.value);
@@ -90,7 +114,7 @@ const ERC20 = (props) => {
         />
 
         <input
-        required
+          required
           type="text"
           value={amount}
           onChange={handleAmountInput}
@@ -98,7 +122,13 @@ const ERC20 = (props) => {
           className="text-[#929292] bg-[#263140] rounded-full w-full p-4 m-3 text-[16px] w-[30%] text-center"
         />
       </div>
-               
+      <div>
+        Token Balance: {tokenbalance}
+      </div>
+      <button onClick={tokenBalance} className="text-white bg-[#17987F] hover:bg-gray-800 text-center rounded-full w-full p-4 my-3 text-[16px] hover:bg-gray-200 cursor-pointer">
+        Check Token Balance
+      </button>
+
       <button
         onClick={tokenTransfer}
         type="submit"

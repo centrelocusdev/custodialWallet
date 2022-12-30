@@ -43,7 +43,7 @@ const NativeTransfer = (props) => {
     setLoading(true);
 
     if (chain === "ethereum") {
-      setProvider();
+      setProvider("https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161");
     } else {
       setProvider("https://rpc-mumbai.maticvigil.com");
     }
