@@ -4,7 +4,7 @@ import axios from "axios";
 import { CircularProgress } from "@mui/material";
 const NativeTransfer = (props) => {
   const { email } = props;
-  const [chain, setChain] = useState("mumbai");
+  const [chain, setChain] = useState('mumbai');
   const [balance, setBalance] = useState("");
   const [receiver, setReceiver] = useState("");
   const [amount, setAmount] = useState("");
@@ -12,30 +12,36 @@ const NativeTransfer = (props) => {
   const [loading, setLoading] = useState(false);
 
   const api = "https://thedelvierypointe.com";
-                  
+
   useEffect(() => {
-    checkBalance();
-  }, []);
+    checkBalance()
+    console.log(provider)
+  })
 
   const checkBalance = async () => {
-    if (chain === "ethereum") {
-      setProvider(
-        "https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161"
-      );
-    } else {
-      setProvider("https://rpc-mumbai.maticvigil.com");
-    }
-
-    const response = await axios.post(
-      `${api}/balance`,
-      { email, provider },
-      { withCredentials: true },
-      {
-        headers: { "Content-Type": "application/json" },
+    try {
+      if (chain == "ethereum") {
+        setProvider(
+          "https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161"
+        );
+      } else {
+        setProvider("https://rpc-mumbai.maticvigil.com");
       }
-    );
-    setBalance(response.data);
-    console.log(response.data);
+        
+      const response = await axios.post(
+        `${api}/balance`,
+        { email, provider },
+        { withCredentials: true },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+      setBalance(response.data);
+      console.log(balance)
+      console.log("balance: ", response)
+    } catch(err) {
+      console.log(err)
+    }
   };
 
   //Transfer
@@ -74,8 +80,8 @@ const NativeTransfer = (props) => {
   };
 
   const handleChange = (e) => {
-    checkBalance(); //calling on change
     setChain(e.target.value);
+    checkBalance(); //calling on change
   };
 
   const handleReceiverInput = (e) => setReceiver(e.target.value);
@@ -85,7 +91,6 @@ const NativeTransfer = (props) => {
     <section className="py-12 px-7 shadow-lg rounded-2xl w-fit mx-auto bg-[#141E2F] text-[20px]">
       <select
       required
-        value={chain}
         onChange={handleChange}
         className="p-4 rounded-full bg-[#263140] text-[#929292] w-full px-7"
       >
