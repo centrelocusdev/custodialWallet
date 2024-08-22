@@ -21,12 +21,12 @@ const RecentReceipt = (props) => {
 
         let endpoint;
         if (chain === 'ethereum') {
-            endpoint = "https://api-goerli.etherscan.io/api";
-            setExplorer('https://goerli.etherscan.io/tx/')
+            endpoint = "https://api-sepolia.etherscan.io/api";
+            setExplorer('https://sepolia.etherscan.io/tx/')
         }
         else {
-            endpoint = "https://api-testnet.polygonscan.com/api"
-            setExplorer('https://mumbai.polygonscan.com/tx/');
+            endpoint = "https://api-amoy.polygonscan.com/api"
+            setExplorer('https://amoy.polygonscan.com/tx/');
         }
 
         const ADDRESS = walletaddress;
