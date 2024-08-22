@@ -17,7 +17,7 @@ const ERC20 = (props) => {
     setLoading(true);
     let provider = "";
     if (chain === "ethereum") {
-      provider = "https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161";
+      provider = "https://sepolia.infura.io/v3/85a63c22049746b8af395057fa84813d";
     } else {
       provider = "https://polygon-amoy.infura.io/v3/85a63c22049746b8af395057fa84813d";
     }
@@ -51,7 +51,7 @@ const ERC20 = (props) => {
   const tokenBalance = async () => {
     let provider = "";
     if (chain === "ethereum") {
-      provider = "https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161";
+      provider = "https://sepolia.infura.io/v3/85a63c22049746b8af395057fa84813d";
     } else {
       provider = "https://polygon-amoy.infura.io/v3/85a63c22049746b8af395057fa84813d";
     }
