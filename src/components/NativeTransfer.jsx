@@ -22,10 +22,10 @@ const NativeTransfer = (props) => {
     try {
       if (chain == "ethereum") {
         setProvider(
-          "https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161"
+          "https://sepolia.infura.io/v3/85a63c22049746b8af395057fa84813d"
         );
       } else {
-        setProvider("https://rpc-mumbai.maticvigil.com");
+        setProvider("https://polygon-amoy.infura.io/v3/85a63c22049746b8af395057fa84813d");
       }
         
       const response = await axios.post(
@@ -49,9 +49,9 @@ const NativeTransfer = (props) => {
     setLoading(true);
 
     if (chain === "ethereum") {
-      setProvider("https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161");
+      setProvider("https://sepolia.infura.io/v3/85a63c22049746b8af395057fa84813d");
     } else {
-      setProvider("https://rpc-mumbai.maticvigil.com");
+      setProvider("https://polygon-amoy.infura.io/v3/85a63c22049746b8af395057fa84813d");
     }
 
     try {
