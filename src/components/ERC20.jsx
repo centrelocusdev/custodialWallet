@@ -83,10 +83,10 @@ const ERC20 = (props) => {
         className="p-4 rounded-full bg-[#263140] text-[#929292] w-full px-7"
       >
         <option value="mumbai" className="py-4 text-[#929292]">
-          Mumbai
+          Polygon Amoy
         </option>
         <option value="ethereum" className="py-4 text-[#929292]">
-          Ethereum
+          Ethereum Sepolia
         </option>
       </select>
 
